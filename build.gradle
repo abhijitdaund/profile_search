@@ -1,0 +1,89 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.10.RELEASE'
+		mapstructVersion = '1.2.0.CR1'
+	}	
+		
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+plugins {
+    id "net.ltgt.apt" version "0.10"
+}
+
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'java'
+            exclude 'mtech/dissertation/profile_search/test/**'
+        }
+        resources {
+            srcDir 'resources'
+        }
+    }
+}
+
+// Generating the class files in bin folder
+sourceSets.main.output.classesDir = file("bin")
+
+group = 'com.accolite'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+configurations.all {
+  resolutionStrategy {
+    force 'com.fasterxml.jackson:jackson-core:2.9.5'
+  }
+}
+dependencies {
+	compile fileTree(dir: 'libs', include: ['*.jar'])
+	compile group: 'postgresql', name: 'postgresql', version: '9.0-801.jdbc4'
+	
+	//compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.5'
+	//compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.5'
+	//compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.5'
+	
+	compile group: 'com.fasterxml.jackson', name: 'jackson-bom', version: '2.9.5', ext: 'pom'
+	
+	
+	compile('org.springframework.boot:spring-boot-starter-aop')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-jdbc')
+	
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('org.springframework.security:spring-security-test')
+	compile('org.liquibase:liquibase-core')
+	
+	compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.2.0'
+	
+	compile group: 'com.h2database', name: 'h2', version: '1.4.196'
+	compile group: 'org.projectlombok', name: 'lombok', version: '1.16.18'
+	compile group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+	runtime('com.h2database:h2')
+	
+	//MapStruct
+	compile "org.mapstruct:mapstruct-jdk8:${mapstructVersion}"
+    testCompile 'org.testng:testng:6.10', 'org.easytesting:fest-assert:1.4'
+    apt "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+
+    apt "org.projectlombok:lombok:1.16.18"
+}
