@@ -6,15 +6,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Import;
+
+import mtech.dissertation.profilesearch.config.AppConfig;
 
 /**
  * Spring boot main application to run HRMS application.
  * 
- * @author abhijit.daund
+ * @author Abhijit.Daund
  */
 @SpringBootApplication
 // @EnableScheduling
-// @Import(AppConfig.class)
+@Import(AppConfig.class)
 public class ProfileSearchApplicationRunner extends SpringBootServletInitializer {
 
     private static final Logger LOG = LoggerFactory.getLogger(ProfileSearchApplicationRunner.class);
