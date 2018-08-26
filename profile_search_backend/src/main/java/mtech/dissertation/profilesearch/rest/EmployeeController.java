@@ -31,15 +31,29 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @RequestMapping(value = "/employeeById/{id}", method = RequestMethod.GET)
-    public EmployeeDTO getEmployeeById(@PathVariable final String id) throws Exception {
-        LOG.info("getEmployeeById by id: " + id);
-        return employeeMapper.toEmployeeDTO(employeeService.findOne(id));
+    /**
+     * Gets the list of all employee DTOs.
+     * 
+     * @return the list of all employee DTOs
+     * @throws Exception
+     */
+    @RequestMapping(method = RequestMethod.GET)
+    public List<EmployeeDTO> getEmployees() throws Exception {
+        LOG.info("getEmployees(): ");
+        return employeeMapper.toEmployeeDTOList(employeeService.findAll());
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<EmployeeDTO> getEmployees() throws Exception {
-        LOG.info("*** Ticket Controller : getEmployees: ");
-        return employeeMapper.toEmployeeDTOList(employeeService.findAll());
+    /**
+     * Gets the employee DTO by given id.
+     * 
+     * @param id
+     *            the id
+     * @return the employee DTO
+     * @throws Exception
+     */
+    @RequestMapping(value = "/employeeById/{id}", method = RequestMethod.GET)
+    public EmployeeDTO getEmployeeById(@PathVariable final String id) throws Exception {
+        LOG.info("getEmployeeById(): id: " + id);
+        return employeeMapper.toEmployeeDTO(employeeService.findOne(id));
     }
 }
