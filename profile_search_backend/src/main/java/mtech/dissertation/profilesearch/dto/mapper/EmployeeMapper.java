@@ -58,7 +58,7 @@ public abstract class EmployeeMapper {
     public abstract EmployeeDTO toEmployeeDTO(Employee employee) throws Exception;
 
     /**
-     * Maps give Employee list to EmployeeDTO list.
+     * Maps given Employee list to EmployeeDTO list.
      * 
      * @param employeeList
      *            a list of employees

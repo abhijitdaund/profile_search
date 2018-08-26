@@ -7,6 +7,8 @@ import mtech.dissertation.profilesearch.repository.EmployeeRepository;
 import mtech.dissertation.profilesearch.service.api.EmployeeService;
 
 /**
+ * Employee Service Implementation.
+ * 
  * @author Abhijit.Daund
  */
 @Service
