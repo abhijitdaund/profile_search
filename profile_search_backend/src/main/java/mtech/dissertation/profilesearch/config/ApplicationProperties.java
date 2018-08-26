@@ -13,34 +13,34 @@ import org.springframework.stereotype.Component;
 @PropertySource("classpath:application.properties")
 public class ApplicationProperties {
 
-    @Value("database.username")
+    @Value("${database.username}")
     private String databaseUserName;
 
-    @Value("database.password")
+    @Value("${database.password}")
     private String databasePassword;
 
-    @Value("database.url")
+    @Value("${database.url}")
     private String databaseURL;
 
-    @Value("server.contextPath")
+    @Value("${server.contextPath}")
     private String serverContextPath;
 
-    @Value("server.port")
+    @Value("${server.port}")
     private String serverPort;
 
-    @Value("profilesearch.frontend.deployed.path")
+    @Value("${profilesearch.frontend.deployed.path}")
     private String profileSearchFrontendDeployedPath;
 
-    @Value("profilesearch.backend.deployed.path")
+    @Value("${profilesearch.backend.deployed.path}")
     private String profileSearchBackendDeployedPath;
 
-    @Value("spring.datasource.url")
+    @Value("${spring.datasource.url}")
     private String springDatasourceURL;
 
-    @Value("spring.datasource.username")
+    @Value("${spring.datasource.username}")
     private String springDatasourceUserName;
 
-    @Value("spring.datasource.password")
+    @Value("${spring.datasource.password}")
     private String springDatasourcePassword;
 
     /**

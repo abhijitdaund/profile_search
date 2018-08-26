@@ -37,14 +37,12 @@ public class DevConfig {
                 .password(applicationProperties.getSpringDatasourcePassword()).build();
     }
 
-    // @Bean
-    // @Profile("dev-postgres-profilesearch")
-    // public DataSource dataSource2() {
-    // return
-    // DataSourceBuilder.create().driverClassName(org.postgresql.Driver.class.getName())
-    // .username(applicationProperties.getDatabaseUserName())
-    // .password(applicationProperties.getDatabasePassword()).url(applicationProperties.getDatabaseURL())
-    // .build();
-    // }
-
+    @Bean
+    @Profile("dev-postgres-profilesearch")
+    public DataSource dataSource2() {
+        return DataSourceBuilder.create().driverClassName(org.postgresql.Driver.class.getName())
+                .username(applicationProperties.getDatabaseUserName())
+                .password(applicationProperties.getDatabasePassword()).url(applicationProperties.getDatabaseURL())
+                .build();
+    }
 }

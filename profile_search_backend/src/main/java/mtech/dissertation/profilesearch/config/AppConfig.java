@@ -15,7 +15,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan(basePackageClasses = { mtech.dissertation.profilesearch.exception.PackageInfo.class,
         mtech.dissertation.profilesearch.rest.PackageInfo.class,
         mtech.dissertation.profilesearch.config.PackageInfo.class,
-        mtech.dissertation.profilesearch.dto.mapper.PackageInfo.class })
+        mtech.dissertation.profilesearch.dto.PackageInfo.class,
+        mtech.dissertation.profilesearch.dto.mapper.PackageInfo.class, })
 @EnableJpaRepositories(basePackageClasses = { mtech.dissertation.profilesearch.repository.PackageInfo.class })
 @EntityScan(basePackageClasses = { mtech.dissertation.profilesearch.entity.PackageInfo.class })
 @PropertySource("classpath:application.properties")
