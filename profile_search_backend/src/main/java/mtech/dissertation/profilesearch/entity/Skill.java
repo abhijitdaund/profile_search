@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -20,9 +21,10 @@ import lombok.Data;
 public class Skill {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id")
-    private String id;
+    @SequenceGenerator(name = "sequence_skill_id_generator", sequenceName = "skill_sequence", initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_skill_id_generator")
+    @Column(name = "id", updatable = false, nullable = false)
+    private int id;
 
     @Column(name = "skill_name")
     private String skillName;

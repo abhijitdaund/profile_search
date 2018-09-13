@@ -1,6 +1,5 @@
 package mtech.dissertation.profilesearch.dto.mapper;
 
-import java.util.Date;
 import java.util.List;
 
 import org.mapstruct.IterableMapping;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import mtech.dissertation.profilesearch.dto.EmployeeDTO;
 import mtech.dissertation.profilesearch.entity.Employee;
+import mtech.dissertation.profilesearch.exception.UnexpectedException;
 
 /**
  * Employee Mapper class.
@@ -22,28 +22,13 @@ import mtech.dissertation.profilesearch.entity.Employee;
 @Component
 public abstract class EmployeeMapper {
 
-    private String empId;
-    private String firstName;
-    private String middleName;
-    private String lastName;
-    private String gender;
-    private String mobile;
-    private String workPhone;
-    private String workEmail;
-    private String skypeId;
-    private boolean isActive;
-    private String creatorUserId;
-    private Date createdTS;
-    private String lastModifierUserId;
-    private Date lastModTS;
-
     /**
      * Maps given Employee to EmployeeDTO.
      * 
      * @param employee
      *            an employee
      * @return an employeeDTO
-     * @throws Exception
+     * @throws UnexpectedException
      */
     @Mappings({ @Mapping(source = "empId", target = "empId"), @Mapping(source = "firstName", target = "firstName"),
             @Mapping(source = "middleName", target = "middleName"), @Mapping(source = "lastName", target = "lastName"),
@@ -55,7 +40,7 @@ public abstract class EmployeeMapper {
             @Mapping(source = "lastModifierUserId", target = "lastModifierUserId"),
             @Mapping(source = "lastModTS", target = "lastModTS") })
     @Named("toEmployeeDTO")
-    public abstract EmployeeDTO toEmployeeDTO(Employee employee) throws Exception;
+    public abstract EmployeeDTO toEmployeeDTO(Employee employee) throws UnexpectedException;
 
     /**
      * Maps given Employee list to EmployeeDTO list.
@@ -66,5 +51,25 @@ public abstract class EmployeeMapper {
      * @throws Exception
      */
     @IterableMapping(qualifiedByName = "toEmployeeDTO")
-    public abstract List<EmployeeDTO> toEmployeeDTOList(Iterable<Employee> employeeList) throws Exception;
+    public abstract List<EmployeeDTO> toEmployeeDTOList(Iterable<Employee> employeeList) throws UnexpectedException;
+
+    /**
+     * Maps given EmployeeDTO to Employee entity.
+     * 
+     * @param employeeDTO
+     *            an employee DTO
+     * @return an employee entity
+     * @throws UnexpectedException
+     */
+    @Mappings({ @Mapping(source = "empId", target = "empId"), @Mapping(source = "firstName", target = "firstName"),
+            @Mapping(source = "middleName", target = "middleName"), @Mapping(source = "lastName", target = "lastName"),
+            @Mapping(source = "gender", target = "gender"), @Mapping(source = "mobile", target = "mobile"),
+            @Mapping(source = "workPhone", target = "workPhone"), @Mapping(source = "workEmail", target = "workEmail"),
+            @Mapping(source = "skypeId", target = "skypeId"), @Mapping(source = "active", target = "active"),
+            @Mapping(source = "creatorUserId", target = "creatorUserId"),
+            @Mapping(source = "createdTS", target = "createdTS"),
+            @Mapping(source = "lastModifierUserId", target = "lastModifierUserId"),
+            @Mapping(source = "lastModTS", target = "lastModTS") })
+    @Named("toEmployeeEntity")
+    public abstract Employee toEmployeeEntity(EmployeeDTO employeeDTO) throws UnexpectedException;
 }

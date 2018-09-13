@@ -10,6 +10,6 @@ import lombok.Data;
 @Data
 public class SkillDTO {
 
-    private String id;
+    // private int id;
     private String skillName;
 }

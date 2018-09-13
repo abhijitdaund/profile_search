@@ -1,5 +1,8 @@
 package mtech.dissertation.profilesearch.service.api;
 
+import java.util.List;
+
+import mtech.dissertation.profilesearch.dto.SkillDTO;
 import mtech.dissertation.profilesearch.entity.Skill;
 import mtech.dissertation.profilesearch.exception.EntityNotFoundException;
 import mtech.dissertation.profilesearch.exception.UnexpectedException;
@@ -15,11 +18,30 @@ public interface SkillService
         BaseService<Skill, SkillRepository, String> {
 
     /**
-     * Gets the skill entity by name.
+     * Finds the skill DTO by name.
      * 
      * @param skillName
      *            the skill name
-     * @return the skill entity
+     * @return the skill DTO
+     * @throws EntityNotFoundException
+     * @throws UnexpectedException
      */
-    Skill getSkillByName(String skillName) throws UnexpectedException, EntityNotFoundException;
+    SkillDTO findSkillByName(String skillName) throws EntityNotFoundException, UnexpectedException;
+
+    /**
+     * Finds DTOs of all the skill.
+     * 
+     * @return DTOs of all the skills
+     * @throws UnexpectedException
+     */
+    List<SkillDTO> findAllSkills() throws UnexpectedException;
+
+    /**
+     * Add the skill using given skill DTO.
+     * 
+     * @param skillDTO
+     *            the skill DTO
+     * @return the skill added
+     */
+    SkillDTO addSkill(SkillDTO skillDTO) throws UnexpectedException;
 }
