@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import mtech.dissertation.profilesearch.dto.SkillDTO;
 import mtech.dissertation.profilesearch.entity.Skill;
+import mtech.dissertation.profilesearch.exception.UnexpectedException;
 
 /**
  * Skill Mapper class.
@@ -29,9 +30,10 @@ public abstract class SkillMapper {
      * @return a skillDTO
      * @throws Exception
      */
-    @Mappings({ @Mapping(source = "id", target = "id"), @Mapping(source = "skillName", target = "skillName"), })
+    @Mappings({ // @Mapping(source = "id", target = "id"),
+            @Mapping(source = "skillName", target = "skillName"), })
     @Named("toSkillDTO")
-    public abstract SkillDTO toSkillDTO(Skill skill) throws Exception;
+    public abstract SkillDTO toSkillDTO(Skill skill) throws UnexpectedException;
 
     /**
      * Maps given Skill list to SkillDTO list.
@@ -42,5 +44,18 @@ public abstract class SkillMapper {
      * @throws Exception
      */
     @IterableMapping(qualifiedByName = "toSkillDTO")
-    public abstract List<SkillDTO> toSkillDTOList(Iterable<Skill> skillList) throws Exception;
+    public abstract List<SkillDTO> toSkillDTOList(Iterable<Skill> skillList) throws UnexpectedException;
+
+    /**
+     * Maps given SkillDTO to Skill entity.
+     * 
+     * @param skillDTO
+     *            a skill DTO
+     * @return a skill entity
+     * @throws Exception
+     */
+    @Mappings({ // @Mapping(source = "id", target = "id"),
+            @Mapping(source = "skillName", target = "skillName"), })
+    @Named("toSkillEntity")
+    public abstract Skill toSkillEntity(SkillDTO skillDTO) throws UnexpectedException;
 }

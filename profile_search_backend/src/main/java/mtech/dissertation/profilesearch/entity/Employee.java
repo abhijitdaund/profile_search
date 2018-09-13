@@ -22,7 +22,7 @@ import lombok.Data;
 public class Employee {
 
     @Id
-    @Column(name = "emp_code")
+    @Column(name = "emp_code", updatable = false, nullable = false)
     private String empId;
 
     @Column(name = "first_name")

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import mtech.dissertation.profilesearch.dto.EmployeeDTO;
-import mtech.dissertation.profilesearch.dto.mapper.EmployeeMapper;
 import mtech.dissertation.profilesearch.service.api.EmployeeService;
 
 /**
@@ -26,9 +25,6 @@ public class EmployeeController {
     private static final Logger LOG = LoggerFactory.getLogger(EmployeeController.class);
 
     @Autowired
-    private EmployeeMapper employeeMapper;
-
-    @Autowired
     private EmployeeService employeeService;
 
     /**
@@ -40,7 +36,7 @@ public class EmployeeController {
     @RequestMapping(method = RequestMethod.GET)
     public List<EmployeeDTO> getEmployees() throws Exception {
         LOG.info("getEmployees(): ");
-        return employeeMapper.toEmployeeDTOList(employeeService.findAll());
+        return employeeService.findAllEmployees();
     }
 
     /**
@@ -54,6 +50,20 @@ public class EmployeeController {
     @RequestMapping(value = "/employeeById/{id}", method = RequestMethod.GET)
     public EmployeeDTO getEmployeeById(@PathVariable final String id) throws Exception {
         LOG.info("getEmployeeById(): id: " + id);
-        return employeeMapper.toEmployeeDTO(employeeService.findOne(id));
+        return employeeService.findEmployeeById(id);
+    }
+
+    /**
+     * Adds a new employee.
+     * 
+     * @param empDTO
+     *            an employee DTO
+     * @return the employee DTO
+     * @throws Exception
+     */
+    @RequestMapping(method = RequestMethod.POST)
+    public EmployeeDTO addEmployee(final EmployeeDTO empDTO) throws Exception {
+        LOG.info("addEmployee(): ");
+        return employeeService.addEmployee(empDTO);
     }
 }

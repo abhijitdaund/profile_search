@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import mtech.dissertation.profilesearch.dto.SkillDTO;
-import mtech.dissertation.profilesearch.dto.mapper.SkillMapper;
 import mtech.dissertation.profilesearch.service.api.SkillService;
 
 /**
@@ -26,9 +25,6 @@ public class SkillController {
     private static final Logger LOG = LoggerFactory.getLogger(SkillController.class);
 
     @Autowired
-    private SkillMapper skillMapper;
-
-    @Autowired
     private SkillService skillService;
 
     /**
@@ -40,7 +36,7 @@ public class SkillController {
     @RequestMapping(method = RequestMethod.GET)
     public List<SkillDTO> getSkills() throws Exception {
         LOG.info("getSkills(): ");
-        return skillMapper.toSkillDTOList(skillService.findAll());
+        return skillService.findAllSkills();
     }
 
     /**
@@ -54,6 +50,20 @@ public class SkillController {
     @RequestMapping(value = "/skillByName/{skillName}", method = RequestMethod.GET)
     public SkillDTO getSkillByName(@PathVariable final String skillName) throws Exception {
         LOG.info("getSkillByName(): skillName: " + skillName);
-        return skillMapper.toSkillDTO(skillService.getSkillByName(skillName));
+        return skillService.findSkillByName(skillName);
+    }
+
+    /**
+     * Adds a new skill.
+     * 
+     * @param skillDTO
+     *            a skill DTO
+     * @return the skill DTO
+     * @throws Exception
+     */
+    @RequestMapping(method = RequestMethod.POST)
+    public SkillDTO addSkill(final SkillDTO skillDTO) throws Exception {
+        LOG.info("addSkill(): ");
+        return skillService.addSkill(skillDTO);
     }
 }
