@@ -45,6 +45,17 @@ public class SkillServiceImpl extends BaseServiceImpl<Skill, SkillRepository, St
     /*
      * (non-Javadoc)
      * @see
+     * mtech.dissertation.profilesearch.service.api.SkillService#findAllSkills()
+     */
+    @Override
+    public List<SkillDTO> findAllSkills() throws UnexpectedException {
+        LOG.info("findAllSkills(): ");
+        return skillMapper.toSkillDTOList(super.findAll());
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
      * mtech.dissertation.profilesearch.service.api.SkillService#addSkill(mtech.
      * dissertation.profilesearch.dto.SkillDTO)
      */
@@ -52,16 +63,5 @@ public class SkillServiceImpl extends BaseServiceImpl<Skill, SkillRepository, St
     public SkillDTO addSkill(final SkillDTO skillDTO) throws UnexpectedException {
         LOG.info("addSkill(): skillName: " + skillDTO.getSkillName());
         return skillMapper.toSkillDTO(repository.save(skillMapper.toSkillEntity(skillDTO)));
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * mtech.dissertation.profilesearch.service.api.SkillService#findAllSkills()
-     */
-    @Override
-    public List<SkillDTO> findAllSkills() throws UnexpectedException {
-        LOG.info("findAllSkills(): ");
-        return skillMapper.toSkillDTOList(super.findAll());
     }
 }

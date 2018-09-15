@@ -40,7 +40,7 @@ public class SkillController {
     }
 
     /**
-     * Gets the skill DTO by name
+     * Gets the skill DTO by name.
      * 
      * @param skillName
      *            the skill name

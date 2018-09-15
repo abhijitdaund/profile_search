@@ -29,6 +29,6 @@ public class ProfileSearchApplicationRunner extends SpringBootServletInitializer
 
     public static void main(final String[] args) {
         SpringApplication.run(ProfileSearchApplicationRunner.class, args);
-        LOG.info("=============== ProfileSearch is up and Running =======================");
+        LOG.info("******************** ProfileSearch is up and Running ********************");
     }
 }

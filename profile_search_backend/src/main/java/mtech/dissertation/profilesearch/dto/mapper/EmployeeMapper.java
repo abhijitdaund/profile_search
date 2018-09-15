@@ -48,7 +48,7 @@ public abstract class EmployeeMapper {
      * @param employeeList
      *            a list of employees
      * @return a list of employeeDTO
-     * @throws Exception
+     * @throws UnexpectedException
      */
     @IterableMapping(qualifiedByName = "toEmployeeDTO")
     public abstract List<EmployeeDTO> toEmployeeDTOList(Iterable<Employee> employeeList) throws UnexpectedException;
