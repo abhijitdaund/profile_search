@@ -3,13 +3,14 @@ package mtech.dissertation.profilesearch.dto;
 import lombok.Data;
 
 /**
- * Skill details DTO class.
+ * Employee Skill Detail DTO class.
  * 
  * @author Abhijit.Daund
  */
 @Data
-public class SkillDetailsDTO {
+public class EmployeeSkillDetailDTO {
 
+    private EmployeeDTO employeeDTO;
     private SkillDTO skillDTO;
-    private String skillLevel;
+    private LevelDTO levelDTO;
 }

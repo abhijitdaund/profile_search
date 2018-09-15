@@ -5,7 +5,7 @@ import java.util.List;
 import lombok.Data;
 
 /**
- * Employee Skill details DTO class.
+ * Employee Skill Details DTO class.
  * 
  * @author Abhijit.Daund
  */
@@ -13,5 +13,5 @@ import lombok.Data;
 public class EmployeeSkillDetailsDTO {
 
     private EmployeeDTO employeeDTO;
-    private List<SkillDetailsDTO> skillDetailsDTOList;
+    private List<SkillDetailDTO> skillDetailDTO;
 }

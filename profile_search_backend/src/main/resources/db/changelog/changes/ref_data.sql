@@ -25,3 +25,9 @@ VALUES ('2002', 'Sourab', null, 'Roy', 1, '9421589823', null, 'sourab.roy@accoli
 
 INSERT INTO employee(emp_code, first_name, middle_name, last_name, gender, mobile, work_phone, work_email, skype_id, creator_user_id, last_modifier_user_id, is_active) 
 VALUES ('2003', 'Sonalisa', null, 'Behera', 2, '9421512645', null, 'sonalisa.behera@accoliteindia.com', 'sonalisa.behera', '1111', '1111', true);
+
+INSERT INTO employee_skill(id, emp_id, skill_id, skill_level_id) VALUES (1, '1977', 1, 3);
+INSERT INTO employee_skill(id, emp_id, skill_id, skill_level_id) VALUES (2, '1977', 2, 2);
+INSERT INTO employee_skill(id, emp_id, skill_id, skill_level_id) VALUES (3, '1977', 3, 2);
+INSERT INTO employee_skill(id, emp_id, skill_id, skill_level_id) VALUES (4, '2002', 1, 2);
+INSERT INTO employee_skill(id, emp_id, skill_id, skill_level_id) VALUES (5, '2002', 8, 1);

@@ -30,8 +30,7 @@ public abstract class SkillMapper {
      * @return a skillDTO
      * @throws Exception
      */
-    @Mappings({ // @Mapping(source = "id", target = "id"),
-            @Mapping(source = "skillName", target = "skillName"), })
+    @Mappings({ @Mapping(source = "skillName", target = "skillName"), })
     @Named("toSkillDTO")
     public abstract SkillDTO toSkillDTO(Skill skill) throws UnexpectedException;
 
@@ -39,7 +38,7 @@ public abstract class SkillMapper {
      * Maps given Skill list to SkillDTO list.
      * 
      * @param skillList
-     *            a list of kills
+     *            a list of skills
      * @return a list of skillDTO
      * @throws Exception
      */
@@ -54,8 +53,7 @@ public abstract class SkillMapper {
      * @return a skill entity
      * @throws Exception
      */
-    @Mappings({ // @Mapping(source = "id", target = "id"),
-            @Mapping(source = "skillName", target = "skillName"), })
+    @Mappings({ @Mapping(source = "skillName", target = "skillName"), })
     @Named("toSkillEntity")
     public abstract Skill toSkillEntity(SkillDTO skillDTO) throws UnexpectedException;
 }

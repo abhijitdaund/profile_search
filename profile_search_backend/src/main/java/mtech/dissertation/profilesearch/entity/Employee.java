@@ -21,6 +21,14 @@ import lombok.Data;
 @Table(name = "employee")
 public class Employee {
 
+    // @Id
+    // @SequenceGenerator(name = "sequence_emp_id_generator", sequenceName =
+    // "emp_sequence", initialValue = 1)
+    // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator =
+    // "sequence_emp_id_generator")
+    // @Column(name = "id", updatable = false, nullable = false)
+    // private int id;
+
     @Id
     @Column(name = "emp_code", updatable = false, nullable = false)
     private String empId;
