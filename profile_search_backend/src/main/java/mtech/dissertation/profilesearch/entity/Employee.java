@@ -30,7 +30,7 @@ public class Employee {
     // private int id;
 
     @Id
-    @Column(name = "emp_code", updatable = false, nullable = false)
+    @Column(name = "emp_id", updatable = false, nullable = false)
     private String empId;
 
     @Column(name = "first_name")
