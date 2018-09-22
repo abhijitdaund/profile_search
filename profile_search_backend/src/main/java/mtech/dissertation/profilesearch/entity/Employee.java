@@ -21,14 +21,6 @@ import lombok.Data;
 @Table(name = "employee")
 public class Employee {
 
-    // @Id
-    // @SequenceGenerator(name = "sequence_emp_id_generator", sequenceName =
-    // "emp_sequence", initialValue = 1)
-    // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator =
-    // "sequence_emp_id_generator")
-    // @Column(name = "id", updatable = false, nullable = false)
-    // private int id;
-
     @Id
     @Column(name = "emp_id", updatable = false, nullable = false)
     private String empId;
@@ -73,4 +65,37 @@ public class Employee {
     @Column(name = "last_mod_ts")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastModTS;
+
+    /*
+     * (non-Javadoc)
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (!(obj instanceof Employee))
+            return false;
+        final Employee other = (Employee) obj;
+        if (empId == null) {
+            if (other.empId != null)
+                return false;
+        } else if (!empId.equals(other.empId))
+            return false;
+        return true;
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((empId == null) ? 0 : empId.hashCode());
+        return result;
+    }
 }

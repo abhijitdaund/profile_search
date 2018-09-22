@@ -13,6 +13,23 @@ import java.util.Set;
 public abstract class CollectionUtil {
 
     /**
+     * Returns a list made from given array of certain type.
+     * 
+     * @param array
+     *            the array
+     * @return a list of given type
+     */
+    public static <T> List<T> toList(final T[] array) {
+        final List<T> list = new LinkedList<T>();
+
+        for (final T t : array) {
+            list.add(t);
+        }
+
+        return list;
+    }
+
+    /**
      * Returns a list made from given iterable of certain type.
      * 
      * @param iterable

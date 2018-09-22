@@ -5,29 +5,29 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import mtech.dissertation.profilesearch.entity.Skill;
+import mtech.dissertation.profilesearch.entity.Level;
 import mtech.dissertation.profilesearch.exception.EntityNotFoundException;
 import mtech.dissertation.profilesearch.exception.UnexpectedException;
 
 /**
- * Skill Crud Repository interface.
+ * Level Crud Repository interface.
  * 
  * @author Abhijit.Daund
  */
 @Repository
-public interface SkillRepository
+public interface LevelRepository
         extends
-        CrudRepository<Skill, Integer> {
+        CrudRepository<Level, Integer> {
 
     /**
-     * Finds the skill entity by name.
+     * Finds the level entity by name.
      * 
-     * @param skillName
-     *            the skill name
-     * @return the skill entity
+     * @param levelName
+     *            the level name
+     * @return the level entity
      * @throws EntityNotFoundException
      * @throws UnexpectedException
      */
-    @Query("SELECT s FROM skill s WHERE s.skillName = :skillName")
-    Skill findSkillByName(@Param("skillName") String skillName) throws EntityNotFoundException, UnexpectedException;
+    @Query("SELECT l FROM level l WHERE l.levelName = :levelName")
+    Level findLevelByName(@Param("levelName") String levelName) throws EntityNotFoundException, UnexpectedException;
 }

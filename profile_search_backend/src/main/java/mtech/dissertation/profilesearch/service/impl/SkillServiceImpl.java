@@ -21,7 +21,7 @@ import mtech.dissertation.profilesearch.service.api.SkillService;
  * @author Abhijit.Daund
  */
 @Service
-public class SkillServiceImpl extends BaseServiceImpl<Skill, SkillRepository, String>
+public class SkillServiceImpl extends BaseServiceImpl<Skill, SkillRepository, Integer>
         implements
         SkillService {
 

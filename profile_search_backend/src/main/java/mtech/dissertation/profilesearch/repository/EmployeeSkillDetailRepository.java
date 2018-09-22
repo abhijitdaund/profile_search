@@ -12,24 +12,23 @@ import mtech.dissertation.profilesearch.exception.EntityNotFoundException;
 import mtech.dissertation.profilesearch.exception.UnexpectedException;
 
 /**
- * Employee Skill Details Crud Repository interface.
+ * Employee Skill Detail Crud Repository interface.
  * 
  * @author Abhijit.Daund
  */
 @Repository
-public interface EmployeeSkillDetailsRepository
+public interface EmployeeSkillDetailRepository
         extends
         CrudRepository<EmployeeSkillDetail, String> {
 
     /**
-     * Finds a list of employee skill detail for given employee id.
+     * Finds a list of employee skill detail by given employee id.
      * 
      * @param empId
      *            an employee id
      * @return a list of employee skill detail
      */
-    @Query("SELECT sd FROM employee e, employeeskilldetail sd, skill s, level l WHERE e.empId = :empId and "
-            + "sd.employee.empId = :empId and s.id = sd.skill.id and l.id = sd.level.id")
-    List<EmployeeSkillDetail> findEmployeeSkillDetails(@Param("empId") String empId)
+    @Query("SELECT sd FROM employeeskilldetail sd WHERE sd.compositeEmpSkillId.empId = :empId")
+    List<EmployeeSkillDetail> findSkillDetailsByEmpId(@Param("empId") String empId)
             throws EntityNotFoundException, UnexpectedException;
 }

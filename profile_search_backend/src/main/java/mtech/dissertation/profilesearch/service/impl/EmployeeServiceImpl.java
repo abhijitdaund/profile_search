@@ -41,6 +41,10 @@ public class EmployeeServiceImpl extends BaseServiceImpl<Employee, EmployeeRepos
     @Override
     public EmployeeDTO findEmployeeById(final String id) throws EntityNotFoundException, UnexpectedException {
         LOG.info("findEmployeeById(): id: " + id);
+        if (!exists(id)) {
+            throw new EntityNotFoundException(Employee.class.getSimpleName(), id);
+        }
+
         Employee employee;
         try {
             employee = super.findOne(id);
@@ -55,9 +59,6 @@ public class EmployeeServiceImpl extends BaseServiceImpl<Employee, EmployeeRepos
             throw new UnexpectedException(e.getStackTrace());
         }
 
-        if (null == employee) {
-            throw new EntityNotFoundException(Employee.class.getSimpleName(), id);
-        }
         return employeeMapper.toEmployeeDTO(employee);
     }
 
@@ -94,6 +95,7 @@ public class EmployeeServiceImpl extends BaseServiceImpl<Employee, EmployeeRepos
             employeeDTO.setLastModTS(date);
         }
 
-        return employeeMapper.toEmployeeDTO(repository.save(employeeMapper.toEmployeeEntity(employeeDTO)));
+        final Employee employee = employeeMapper.toEmployeeEntity(employeeDTO);
+        return employeeMapper.toEmployeeDTO(repository.save(employee));
     }
 }

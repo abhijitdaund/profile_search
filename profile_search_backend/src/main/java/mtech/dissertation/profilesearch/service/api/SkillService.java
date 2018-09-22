@@ -15,7 +15,7 @@ import mtech.dissertation.profilesearch.repository.SkillRepository;
  */
 public interface SkillService
         extends
-        BaseService<Skill, SkillRepository, String> {
+        BaseService<Skill, SkillRepository, Integer> {
 
     /**
      * Finds the skill DTO by name.
