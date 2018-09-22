@@ -40,15 +40,13 @@ create table employee (
 );
 
 create table employee_skill (
-	id bigserial primary key,
 	emp_id character varying references employee(emp_id),
 	skill_id integer not null references skill_lkp(id),
 	skill_level_id varchar(20) references skill_level_lkp(id), 
 
-	constraint employee_skill_unique_row unique(emp_id, skill_id, skill_level_id)
+	constraint employee_skill_unique_row primary key (emp_id, skill_id)
 ); 
 
 create sequence skill_sequence start with 1 increment by 1;
-create sequence emp_skill_sequence start with 1 increment by 1;
 create sequence level_sequence start with 1 increment by 1;
 

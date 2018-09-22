@@ -6,16 +6,16 @@ import mtech.dissertation.profilesearch.dto.EmployeeSkillDetailsDTO;
 import mtech.dissertation.profilesearch.entity.EmployeeSkillDetail;
 import mtech.dissertation.profilesearch.exception.EntityNotFoundException;
 import mtech.dissertation.profilesearch.exception.UnexpectedException;
-import mtech.dissertation.profilesearch.repository.EmployeeSkillDetailsRepository;
+import mtech.dissertation.profilesearch.repository.EmployeeSkillDetailRepository;
 
 /**
- * The Employee Skill Details Service interface.
+ * The Employee Skill Detail Service interface.
  * 
  * @author Abhijit.Daund
  */
-public interface EmployeeSkillDetailsService
+public interface EmployeeSkillDetailService
         extends
-        BaseService<EmployeeSkillDetail, EmployeeSkillDetailsRepository, String> {
+        BaseService<EmployeeSkillDetail, EmployeeSkillDetailRepository, String> {
 
     /**
      * Finds a list of employee skill details DTO for given employee id.
@@ -38,4 +38,15 @@ public interface EmployeeSkillDetailsService
      * @throws UnexpectedException
      */
     List<EmployeeSkillDetailsDTO> findAllEmpSkillDetails() throws UnexpectedException;
+
+    /**
+     * Adds a new employee skill details.
+     * 
+     * @param esdDTO
+     *            employee skill details DTO
+     * @return an employee skill details DTO added
+     * @throws UnexpectedException
+     */
+    EmployeeSkillDetailsDTO addEmpSkillDetails(EmployeeSkillDetailsDTO esdDTO)
+            throws EntityNotFoundException, UnexpectedException;
 }
