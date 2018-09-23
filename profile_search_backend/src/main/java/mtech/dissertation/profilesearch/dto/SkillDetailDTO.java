@@ -12,4 +12,5 @@ public class SkillDetailDTO {
 
     private String skillName;
     private String levelName;
+    private boolean isDeleted;
 }
