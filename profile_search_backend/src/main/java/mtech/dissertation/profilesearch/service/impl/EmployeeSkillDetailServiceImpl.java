@@ -79,17 +79,23 @@ public class EmployeeSkillDetailServiceImpl
         return empSkillDetailsMapper.toEmployeeSkillDetailsDTOList(employeeSkillDetailsList);
     }
 
+    /*
+     * (non-Javadoc)
+     * @see mtech.dissertation.profilesearch.service.api.EmployeeSkillDetailService#
+     * saveEmpSkillDetails(mtech.dissertation.profilesearch.dto.
+     * EmployeeSkillDetailsDTO)
+     */
     @Override
-    public EmployeeSkillDetailsDTO addEmpSkillDetails(final EmployeeSkillDetailsDTO esdDTO)
+    public EmployeeSkillDetailsDTO saveEmpSkillDetails(final EmployeeSkillDetailsDTO esdDTO)
             throws EntityNotFoundException, UnexpectedException {
-        LOG.info("addEmpSkillDetails(): empId: " + esdDTO.getEmployeeDTO().getEmpId());
+        LOG.info("saveEmpSkillDetails(): empId: " + esdDTO.getEmployeeDTO().getEmpId());
 
         for (final SkillDetailDTO skillDetailDTO : esdDTO.getSkillDetailDTO()) {
             final EmployeeSkillDetail empSkillDetail = new EmployeeSkillDetail();
             empSkillDetail.setCompositeEmpSkillId(new CompositeEmpSkillId());
 
             if (!empRepository.exists(esdDTO.getEmployeeDTO().getEmpId())) {
-                LOG.error("addEmpSkillDetails(): empId: " + esdDTO.getEmployeeDTO().getEmpId() + " not found");
+                LOG.error("saveEmpSkillDetails(): empId: " + esdDTO.getEmployeeDTO().getEmpId() + " not found");
                 throw new EntityNotFoundException(Employee.class.getSimpleName(),
                         empSkillDetail.getCompositeEmpSkillId().getSkillId().toString());
             }
@@ -100,7 +106,7 @@ public class EmployeeSkillDetailServiceImpl
                 final int skillId = skillRepository.findSkillByName(skillDetailDTO.getSkillName()).getId();
                 empSkillDetail.getCompositeEmpSkillId().setSkillId(skillId);
             } catch (final EntityNotFoundException e) {
-                LOG.error("addEmpSkillDetails(): ", e);
+                LOG.error("saveEmpSkillDetails(): ", e);
                 throw new EntityNotFoundException(Skill.class.getSimpleName(),
                         empSkillDetail.getCompositeEmpSkillId().getSkillId().toString());
             }
@@ -109,8 +115,13 @@ public class EmployeeSkillDetailServiceImpl
                 final int levelId = levelRepository.findLevelByName(skillDetailDTO.getLevelName()).getId();
                 empSkillDetail.setLevelId(levelId);
             } catch (final EntityNotFoundException e) {
-                LOG.error("addEmpSkillDetails(): ", e);
+                LOG.error("saveEmpSkillDetails(): ", e);
                 throw new EntityNotFoundException(Level.class.getSimpleName(), empSkillDetail.getLevelId().toString());
+            }
+
+            if (skillDetailDTO.isDeleted()) {
+                delete(empSkillDetail);
+                continue;
             }
 
             save(empSkillDetail);
@@ -124,6 +135,7 @@ public class EmployeeSkillDetailServiceImpl
     }
 
     private List<EmployeeSkillDetails> toEmployeeSkillDetails(final List<EmployeeSkillDetail> employeeSkillDetailList) {
+        LOG.info("toEmployeeSkillDetails(): ");
         final List<EmployeeSkillDetails> empSkillDetailsList = new ArrayList<EmployeeSkillDetails>(
                 employeeSkillDetailList.size());
 

@@ -40,13 +40,13 @@ public interface EmployeeSkillDetailService
     List<EmployeeSkillDetailsDTO> findAllEmpSkillDetails() throws UnexpectedException;
 
     /**
-     * Adds a new employee skill details.
+     * Saves employee skill details.
      * 
      * @param esdDTO
      *            employee skill details DTO
-     * @return an employee skill details DTO added
+     * @return an employee skill details DTO
      * @throws UnexpectedException
      */
-    EmployeeSkillDetailsDTO addEmpSkillDetails(EmployeeSkillDetailsDTO esdDTO)
+    EmployeeSkillDetailsDTO saveEmpSkillDetails(EmployeeSkillDetailsDTO esdDTO)
             throws EntityNotFoundException, UnexpectedException;
 }

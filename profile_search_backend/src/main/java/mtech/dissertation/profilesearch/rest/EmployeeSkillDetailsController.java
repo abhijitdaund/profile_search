@@ -59,7 +59,7 @@ public class EmployeeSkillDetailsController {
     }
 
     /**
-     * Adds employee skill details.
+     * Saves employee skill details.
      * 
      * @param skillDetailsDTO
      *            the skill details DTO
@@ -67,14 +67,14 @@ public class EmployeeSkillDetailsController {
      * @throws Exception
      */
     @RequestMapping(method = RequestMethod.POST)
-    public EmployeeSkillDetailsDTO addEmpSkillDetails(@RequestBody final SkillDetailsDTO skillDetailsDTO)
+    public EmployeeSkillDetailsDTO saveEmpSkillDetails(@RequestBody final SkillDetailsDTO skillDetailsDTO)
             throws Exception {
-        LOG.info("addEmpSkillDetails(): empId: " + skillDetailsDTO.getEmpId());
+        LOG.info("saveEmpSkillDetails(): empId: " + skillDetailsDTO.getEmpId());
         final EmployeeSkillDetailsDTO esdDTO = new EmployeeSkillDetailsDTO();
         final EmployeeDTO empDTO = new EmployeeDTO();
         empDTO.setEmpId(skillDetailsDTO.getEmpId());
         esdDTO.setEmployeeDTO(empDTO);
         esdDTO.setSkillDetailDTO(skillDetailsDTO.getSkillDetailDTOList());
-        return empSkillDetailsService.addEmpSkillDetails(esdDTO);
+        return empSkillDetailsService.saveEmpSkillDetails(esdDTO);
     }
 }
