@@ -1,6 +1,7 @@
 package mtech.dissertation.profilesearch.service.impl;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -60,6 +61,28 @@ public class EmployeeServiceImpl extends BaseServiceImpl<Employee, EmployeeRepos
         }
 
         return employeeMapper.toEmployeeDTO(employee);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see mtech.dissertation.profilesearch.service.api.EmployeeService#
+     * findEmployeesByName(java.lang.String)
+     */
+    @Override
+    public List<EmployeeDTO> findEmployeesByName(final String name)
+            throws EntityNotFoundException, UnexpectedException {
+        LOG.info("findEmployeesByName(): name: " + name);
+
+        if (null == name || name.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        final String[] nameSplit = name.split("");
+
+        final String firstName = nameSplit[0];
+        final String lastName = (nameSplit.length >= 2) ? nameSplit[1] : firstName;
+
+        return employeeMapper.toEmployeeDTOList(repository.findEmployeesByName(firstName, lastName));
     }
 
     /*

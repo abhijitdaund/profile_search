@@ -12,6 +12,5 @@ import lombok.Data;
 @Data
 public class SkillDetailsDTO {
 
-    private String empId;
     private List<SkillDetailDTO> skillDetailDTOList;
 }

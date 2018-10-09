@@ -2,7 +2,9 @@ package mtech.dissertation.profilesearch.service.api;
 
 import java.util.List;
 
+import mtech.dissertation.profilesearch.dto.EmployeeDTO;
 import mtech.dissertation.profilesearch.dto.EmployeeSkillDetailsDTO;
+import mtech.dissertation.profilesearch.dto.SkillDetailsDTO;
 import mtech.dissertation.profilesearch.entity.EmployeeSkillDetail;
 import mtech.dissertation.profilesearch.exception.EntityNotFoundException;
 import mtech.dissertation.profilesearch.exception.UnexpectedException;
@@ -30,7 +32,7 @@ public interface EmployeeSkillDetailService
             throws EntityNotFoundException, UnexpectedException;
 
     /**
-     * Gets a list of all employee skill details DTO.
+     * Finds a list of all employee skill details DTO.
      * 
      * @param empId
      *            an employee id
@@ -48,5 +50,18 @@ public interface EmployeeSkillDetailService
      * @throws UnexpectedException
      */
     EmployeeSkillDetailsDTO saveEmpSkillDetails(EmployeeSkillDetailsDTO esdDTO)
+            throws EntityNotFoundException, UnexpectedException;
+
+    /**
+     * Finds a list of all employee DTOs who possess the given
+     * skill/skill-set/skill-levels.
+     * 
+     * @param skillDetailsDTO
+     *            the skill/skill-set/skill-levels details DTO
+     * @return a list of all employee skill details DTO
+     * @throws EntityNotFoundException
+     * @throws UnexpectedException
+     */
+    List<EmployeeDTO> findAllEmpWithSkillDetails(SkillDetailsDTO skillDetailsDTO)
             throws EntityNotFoundException, UnexpectedException;
 }

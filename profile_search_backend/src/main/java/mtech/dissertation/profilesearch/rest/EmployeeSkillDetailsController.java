@@ -61,20 +61,38 @@ public class EmployeeSkillDetailsController {
     /**
      * Saves employee skill details.
      * 
+     * @param empId
+     *            the employee id
      * @param skillDetailsDTO
      *            the skill details DTO
      * @return an employee skill details DTO
      * @throws Exception
      */
-    @RequestMapping(method = RequestMethod.POST)
-    public EmployeeSkillDetailsDTO saveEmpSkillDetails(@RequestBody final SkillDetailsDTO skillDetailsDTO)
-            throws Exception {
-        LOG.info("saveEmpSkillDetails(): empId: " + skillDetailsDTO.getEmpId());
+    @RequestMapping(value = "/{empId}", method = RequestMethod.POST)
+    public EmployeeSkillDetailsDTO saveEmpSkillDetails(@PathVariable final String empId,
+            @RequestBody final SkillDetailsDTO skillDetailsDTO) throws Exception {
+        LOG.info("saveEmpSkillDetails(): empId: " + empId);
         final EmployeeSkillDetailsDTO esdDTO = new EmployeeSkillDetailsDTO();
         final EmployeeDTO empDTO = new EmployeeDTO();
-        empDTO.setEmpId(skillDetailsDTO.getEmpId());
+        empDTO.setEmpId(empId);
         esdDTO.setEmployeeDTO(empDTO);
         esdDTO.setSkillDetailDTO(skillDetailsDTO.getSkillDetailDTOList());
         return empSkillDetailsService.saveEmpSkillDetails(esdDTO);
+    }
+
+    /**
+     * Gets a list of employee DTOs who possess the given
+     * skill/skill-set/skill-levels.
+     * 
+     * @param skillDetailsDTO
+     *            the skill/skill-set/skill-levels details DTO
+     * @return list of employee DTOs
+     * @throws Exception
+     */
+    @RequestMapping(value = "findEmployeeSkillDetails", method = RequestMethod.POST)
+    public List<EmployeeDTO> findEmployeeSkillDetails(@RequestBody final SkillDetailsDTO skillDetailsDTO)
+            throws Exception {
+        LOG.info("findEmployeeSkillDetails(): ");
+        return empSkillDetailsService.findAllEmpWithSkillDetails(skillDetailsDTO);
     }
 }

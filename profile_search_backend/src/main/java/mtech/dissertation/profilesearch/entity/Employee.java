@@ -34,6 +34,10 @@ public class Employee {
     @Column(name = "last_name")
     private String lastName;
 
+    // @ManyToOne
+    // @JoinColumn(name = "gender_name")
+    // private Gender gender;
+
     @Column(name = "gender")
     private String gender;
 

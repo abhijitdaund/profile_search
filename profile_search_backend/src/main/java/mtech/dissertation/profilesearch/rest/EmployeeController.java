@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,6 +55,20 @@ public class EmployeeController {
     }
 
     /**
+     * Gets the employee DTO by given name.
+     * 
+     * @param name
+     *            the name
+     * @return the list of employee DTOs
+     * @throws Exception
+     */
+    @RequestMapping(value = "/employeesByName/{name}", method = RequestMethod.GET)
+    public List<EmployeeDTO> getEmployeesByName(@PathVariable final String name) throws Exception {
+        LOG.info("getEmployeesByName(): name: " + name);
+        return employeeService.findEmployeesByName(name);
+    }
+
+    /**
      * Adds a new employee.
      * 
      * @param empDTO
@@ -62,7 +77,7 @@ public class EmployeeController {
      * @throws Exception
      */
     @RequestMapping(method = RequestMethod.POST)
-    public EmployeeDTO addEmployee(final EmployeeDTO empDTO) throws Exception {
+    public EmployeeDTO addEmployee(@RequestBody final EmployeeDTO empDTO) throws Exception {
         LOG.info("addEmployee(): ");
         return employeeService.addEmployee(empDTO);
     }

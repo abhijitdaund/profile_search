@@ -31,4 +31,31 @@ public interface EmployeeSkillDetailRepository
     @Query("SELECT sd FROM employeeskilldetail sd WHERE sd.compositeEmpSkillId.empId = :empId")
     List<EmployeeSkillDetail> findSkillDetailsByEmpId(@Param("empId") String empId)
             throws EntityNotFoundException, UnexpectedException;
+
+    /**
+     * Finds a list of employee skill detail by given skill.
+     * 
+     * @param skillName
+     *            a skill name
+     * @return a list of employee skill detail
+     */
+    @Query("SELECT sd FROM employeeskilldetail sd, skill s WHERE s.skillName = :skillName "
+            + "AND sd.compositeEmpSkillId.skillId = s.id")
+    List<EmployeeSkillDetail> findSkillDetailsBySkillName(@Param("skillName") String skillName)
+            throws EntityNotFoundException, UnexpectedException;
+
+    /**
+     * Finds a list of employee skill detail by given skill and level.
+     * 
+     * @param skillName
+     *            a skill name
+     * @param levelName
+     *            a level name
+     * @return a list of employee skill detail
+     */
+    @Query("SELECT DISTINCT sd FROM employeeskilldetail sd, skill s, level l " + "WHERE s.skillName = :skillName "
+            + "AND sd.compositeEmpSkillId.skillId = s.id " + "AND l.levelName = :levelName AND sd.levelId = l.id "
+            + "group by sd.compositeEmpSkillId.empId")
+    List<EmployeeSkillDetail> findSkillDetailsBySkillAndLevel(@Param("skillName") String skillName,
+            @Param("levelName") String levelName) throws EntityNotFoundException, UnexpectedException;
 }
