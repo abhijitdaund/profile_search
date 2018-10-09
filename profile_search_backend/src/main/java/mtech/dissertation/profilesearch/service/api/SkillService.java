@@ -29,7 +29,7 @@ public interface SkillService
     SkillDTO findSkillByName(String skillName) throws EntityNotFoundException, UnexpectedException;
 
     /**
-     * Finds DTOs of all the skill.
+     * Finds all the skills.
      * 
      * @return DTOs of all the skills
      * @throws UnexpectedException

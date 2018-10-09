@@ -29,6 +29,17 @@ public interface EmployeeService
     EmployeeDTO findEmployeeById(String id) throws EntityNotFoundException, UnexpectedException;
 
     /**
+     * Finds employees by name.
+     * 
+     * @param name
+     *            the name
+     * @return the list of employee DTO
+     * @throws EntityNotFoundException
+     * @throws UnexpectedException
+     */
+    List<EmployeeDTO> findEmployeesByName(String name) throws EntityNotFoundException, UnexpectedException;
+
+    /**
      * Finds DTOs of all the employees.
      * 
      * @return DTOs of all the employees
