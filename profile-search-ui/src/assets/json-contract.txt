@@ -1,0 +1,430 @@
+List
+url:http://localhost:8080/profilesearch-backend/employee/employeeById/2002  --get
+input:
+
+output:
+{
+    "empId": "2002",
+    "firstName": "Sourab",
+    "middleName": null,
+    "lastName": "Roy",
+    "gender": "1",
+    "mobile": "9421589823",
+    "workPhone": null,
+    "workEmail": "sourab.roy@accoliteindia.com",
+    "skypeId": "sourab.roy",
+    "creatorUserId": "1111",
+    "createdTS": 1539096634078,
+    "lastModifierUserId": "1111",
+    "lastModTS": 1539096634078,
+    "active": true
+}
+
+url:http://localhost:8080/profilesearch-backend/employee/ --get
+
+i/p:
+
+o/p:
+[
+    {
+        "empId": "1977",
+        "firstName": "Abhijit",
+        "middleName": "Ramesh",
+        "lastName": "Daund",
+        "gender": "1",
+        "mobile": "9421580968",
+        "workPhone": null,
+        "workEmail": "abhijit.daund@accoliteindia.com",
+        "skypeId": "abhijit.daund",
+        "creatorUserId": "1111",
+        "createdTS": 1538645317113,
+        "lastModifierUserId": "1111",
+        "lastModTS": 1538645317113,
+        "active": true
+    },
+    {
+        "empId": "2003",
+        "firstName": "Sonalisa",
+        "middleName": null,
+        "lastName": "Behera",
+        "gender": "2",
+        "mobile": "9421512645",
+        "workPhone": null,
+        "workEmail": "sonalisa.behera@accoliteindia.com",
+        "skypeId": "sonalisa.behera",
+        "creatorUserId": "1111",
+        "createdTS": 1538645317113,
+        "lastModifierUserId": "1111",
+        "lastModTS": 1538645317113,
+        "active": true
+    }
+] ____________________________________________________________________________________
+
+url:http://localhost:8080/profilesearch-backend/employee --post
+
+i\p:
+{
+	"empId":"4444",
+	"firstName":"Simlin",
+	"middleName":"S",
+	"lastName":"Patnaik",
+	"gender":2,
+	"mobile":"9111111119",
+	"workEmail":"simlin.patnaik@accoliteindia.com",
+	"skypeId":"simlin.patnaik",
+	"creatorUserId":"1111",
+	"lastModifierUserId":"1111",
+	"active":true
+}
+
+o\p:
+{
+    "empId": "4444",
+    "firstName": "Simlin",
+    "middleName": "S",
+    "lastName": "Patnaik",
+    "gender": "2",
+    "mobile": "9111111119",
+    "workPhone": null,
+    "workEmail": "simlin.patnaik@accoliteindia.com",
+    "skypeId": "simlin.patnaik",
+    "creatorUserId": "1111",
+    "createdTS": 1538593912279,
+    "lastModifierUserId": "1111",
+    "lastModTS": 1538593912279,
+    "active": true
+}
+
+url: http://localhost:8080/profilesearch-backend/employee/employeesByName/abhijit --get
+
+i/p:
+
+o/p:
+[
+    {
+        "empId": "1977",
+        "firstName": "Abhijit",
+        "middleName": "Ramesh",
+        "lastName": "Daund",
+        "gender": "1",
+        "mobile": "9421580968",
+        "workPhone": null,
+        "workEmail": "abhijit.daund@accoliteindia.com",
+        "skypeId": "abhijit.daund",
+        "creatorUserId": "1111",
+        "createdTS": 1538645317113,
+        "lastModifierUserId": "1111",
+        "lastModTS": 1538645317113,
+        "active": true
+    },
+    {
+        "empId": "2004",
+        "firstName": "Abhijit",
+        "middleName": null,
+        "lastName": "Behera",
+        "gender": "1",
+        "mobile": "9421512645",
+        "workPhone": null,
+        "workEmail": "sonalisa.behera@accoliteindia.com",
+        "skypeId": "sonalisa.behera",
+        "creatorUserId": "1111",
+        "createdTS": 1538645317113,
+        "lastModifierUserId": "1111",
+        "lastModTS": 1538645317113,
+        "active": true
+    }
+] 
+
+url: http://localhost:8080/profilesearch-backend/skill/  --get
+
+i/p:
+
+o/p:
+
+[
+    {
+        "skillName": "Core Java"
+    },
+    {
+        "skillName": "Advanced Java"
+    },
+    {
+        "skillName": "Spring"
+    },
+    {
+        "skillName": "AOP"
+    }
+] 
+
+url: http://localhost:8080/profilesearch-backend/skill --post
+
+i/p:
+
+{
+	"skillName": "Junit"
+}
+
+o/p:
+
+{
+	"skillName": "Junit"
+}
+
+url: http://localhost:8080/profilesearch-backend/skill/skillByName/Spring  --get
+
+i/p:
+
+o/p:
+
+{
+    "skillName": "Spring"
+}
+
+
+url: http://localhost:8080/profilesearch-backend/empSkillDetails/1977  --get
+
+i/p:
+
+o/p:
+
+[
+    {
+        "employeeDTO": {
+            "empId": "1977",
+            "firstName": "Abhijit",
+            "middleName": "Ramesh",
+            "lastName": "Daund",
+            "gender": "1",
+            "mobile": "9421580968",
+            "workPhone": null,
+            "workEmail": "abhijit.daund@accoliteindia.com",
+            "skypeId": "abhijit.daund",
+            "creatorUserId": "1111",
+            "createdTS": 1539096634078,
+            "lastModifierUserId": "1111",
+            "lastModTS": 1539096634078,
+            "active": true
+        },
+        "skillDetailDTO": [
+            {
+                "skillName": "Core Java",
+                "levelName": "Expert",
+                "deleted": false
+            },
+            {
+                "skillName": "Advanced Java",
+                "levelName": "Intermediate",
+                "deleted": false
+            },
+            {
+                "skillName": "Spring",
+                "levelName": "Intermediate",
+                "deleted": false
+            }
+        ]
+    }
+]
+
+url: http://localhost:8080/profilesearch-backend/empSkillDetails  --get
+
+i/p:
+
+o/p:
+
+[
+    {
+        "employeeDTO": {
+            "empId": "1977",
+            "firstName": "Abhijit",
+            "middleName": "Ramesh",
+            "lastName": "Daund",
+            "gender": "1",
+            "mobile": "9421580968",
+            "workPhone": null,
+            "workEmail": "abhijit.daund@accoliteindia.com",
+            "skypeId": "abhijit.daund",
+            "creatorUserId": "1111",
+            "createdTS": 1539096634078,
+            "lastModifierUserId": "1111",
+            "lastModTS": 1539096634078,
+            "active": true
+        },
+        "skillDetailDTO": [
+            {
+                "skillName": "Core Java",
+                "levelName": "Expert",
+                "deleted": false
+            },
+            {
+                "skillName": "Advanced Java",
+                "levelName": "Intermediate",
+                "deleted": false
+            },
+            {
+                "skillName": "Spring",
+                "levelName": "Intermediate",
+                "deleted": false
+            }
+        ]
+    },
+    {
+        "employeeDTO": {
+            "empId": "2002",
+            "firstName": "Sourab",
+            "middleName": null,
+            "lastName": "Roy",
+            "gender": "1",
+            "mobile": "9421589823",
+            "workPhone": null,
+            "workEmail": "sourab.roy@accoliteindia.com",
+            "skypeId": "sourab.roy",
+            "creatorUserId": "1111",
+            "createdTS": 1539096634078,
+            "lastModifierUserId": "1111",
+            "lastModTS": 1539096634078,
+            "active": true
+        },
+        "skillDetailDTO": [
+            {
+                "skillName": "Core Java",
+                "levelName": "Intermediate",
+                "deleted": false
+            },
+            {
+                "skillName": "Angular JS",
+                "levelName": "Beginner",
+                "deleted": false
+            }
+        ]
+    }
+]
+
+url: http://localhost:8080/profilesearch-backend/empSkillDetails/2002 	--post
+
+i/p: 
+
+{
+	"skillDetailDTOList": [
+		{
+			"skillName": "AOP",
+			"levelName": "Beginner"
+		},
+		{
+			"skillName": "Spring",
+			"levelName": "Beginner"
+		}
+	]
+}
+
+o/p:
+
+{
+    "employeeDTO": {
+        "empId": "2002",
+        "firstName": "Sourab",
+        "middleName": null,
+        "lastName": "Roy",
+        "gender": "1",
+        "mobile": "9421589823",
+        "workPhone": null,
+        "workEmail": "sourab.roy@accoliteindia.com",
+        "skypeId": "sourab.roy",
+        "creatorUserId": "1111",
+        "createdTS": 1539096634078,
+        "lastModifierUserId": "1111",
+        "lastModTS": 1539096634078,
+        "active": true
+    },
+    "skillDetailDTO": [
+        {
+            "skillName": "Core Java",
+            "levelName": "Intermediate",
+            "deleted": false
+        },
+        {
+            "skillName": "Angular JS",
+            "levelName": "Beginner",
+            "deleted": false
+        },
+        {
+            "skillName": "AOP",
+            "levelName": "Beginner",
+            "deleted": false
+        },
+        {
+            "skillName": "Spring",
+            "levelName": "Beginner",
+            "deleted": false
+        }
+    ]
+}
+
+url: http://localhost:8080/profilesearch-backend/empSkillDetails/findEmployeeSkillDetails 	--post
+
+i/p: 
+{
+	"skillDetailDTOList": [
+		{
+			"skillName": "AOP"
+		},
+		{
+			"skillName": "Spring",
+			"levelName": "Expert"
+		}
+	]
+}
+
+o/p:
+
+[
+    {
+        "empId": "2002",
+        "firstName": "Sourab",
+        "middleName": null,
+        "lastName": "Roy",
+        "gender": "1",
+        "mobile": "9421589823",
+        "workPhone": null,
+        "workEmail": "sourab.roy@accoliteindia.com",
+        "skypeId": "sourab.roy",
+        "creatorUserId": "1111",
+        "createdTS": 1539096634078,
+        "lastModifierUserId": "1111",
+        "lastModTS": 1539096634078,
+        "active": true
+    },
+    {
+        "empId": "1977",
+        "firstName": "Abhijit",
+        "middleName": "Ramesh",
+        "lastName": "Daund",
+        "gender": "1",
+        "mobile": "9421580968",
+        "workPhone": null,
+        "workEmail": "abhijit.daund@accoliteindia.com",
+        "skypeId": "abhijit.daund",
+        "creatorUserId": "1111",
+        "createdTS": 1539096634078,
+        "lastModifierUserId": "1111",
+        "lastModTS": 1539096634078,
+        "active": true
+    }
+]
+
+url: http://localhost:8080/profilesearch-backend/level/		--get
+
+i/p:
+
+o/p:
+
+[
+    {
+        "levelName": "Beginner"
+    },
+    {
+        "levelName": "Intermediate"
+    },
+    {
+        "levelName": "Expert"
+    }
+]

@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+
+    
+          
+          
+    <button type="button" id="sidebarCollapse" class="navbar-btn" [ngClass]="{'active':toggle}" (click)="toggleSideBar()">
+          <span></span>
+          <span></span>
+          <span></span>
+      </button>
+      
+      <button class="btn d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="assets/img/default-user-img.png" class="img-fluid img-circle" height="22px" width="22px" alt="Responsive image">
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="nav navbar-nav ml-auto">
+              <li class="nav-item active">
+                  <a class="nav-link" href="javascript:void();">
+                    <img src="assets/img/default-user-img.png" class="img-fluid img-circle" height="32px" width="32px" alt="Responsive image">
+                  </a>
+              </li>
+              <li class="nav-item" (click)="logout()">
+                    <a class="nav-link" href="javascript:void();">
+                        <span class="mt-2 logout"><h6>Logout</h6></span>
+                    </a>
+                </li>
+          </ul>
+      </div>
+  </div>
+</nav>

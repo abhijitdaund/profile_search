@@ -1,0 +1,11 @@
+
+    <div class="wrapper">
+      <app-side-bar [toggle]="toggle" style="height:100vh;"></app-side-bar>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <app-header (toggleSideMenu)="toggleSideMenu($event)"></app-header>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
