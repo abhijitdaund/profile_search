@@ -1,0 +1,156 @@
+<!-- <div class="container">
+  <form [formGroup]="employeeRegistrationForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-sm-12 p-0">
+      <h4>Employee Details</h4>
+      <hr>
+      </div>
+
+   
+      <div class="input-group input-group-icon col-sm-4 p-0">
+        <input type="text" placeholder="First Name" formControlName="firstName" />
+        <div class="input-icon"><i class="fa fa-user"></i></div>
+      </div>
+      <div class="input-group input-group-icon col-sm-4 p-0">
+        <input type="text" placeholder="Middle Name" formControlName="middleName" />
+      </div>
+      <div class="input-group input-group-icon col-sm-4 p-0">
+        <input type="text" placeholder="Last Name" formControlName="lastName" />
+      </div>
+      <div class="input-group input-group-icon">
+        <input type="email" placeholder="Email Address" formControlName="workEmail"/>
+        <div class="input-icon"><i class="fa fa-envelope"></i></div>
+      </div>
+      <div class="input-group input-group-icon">
+        <input type="text" placeholder="Skype Id" formControlName="skypeId"/>
+        <div class="input-icon"><i class="fa fa-skype"></i></div>
+      </div>
+      <div class="input-group input-group-icon">
+          <input type="text" placeholder="Mobile" formControlName="mobile"/>
+          <div class="input-icon"><i class="fa fa-mobile"></i></div>
+        </div>
+        <div class="input-group input-group-icon">
+            <input type="text" placeholder="Work Phone" formControlName="workPhone"/>
+            <div class="input-icon"><i class="fa fa-phone-square"></i></div>
+          </div>
+
+          <div class="input-group input-group-icon">
+              <input type="text" placeholder="Employee Id" formControlName="empId" />
+              <div class="input-icon"><i class="fa fa-user"></i></div>
+            </div>
+
+
+          <div class="row">
+              
+                <h5>Gender</h5>
+                <div class="input-group">
+                  <input type="radio" name="gender" value="male" id="gender-male" formControlName="gender"/>
+                  <label for="gender-male">Male</label>
+                  <input type="radio" name="gender" value="female" id="gender-female" formControlName="gender"/>
+                  <label for="gender-female">Female</label>
+                </div>
+            
+             
+            </div>
+    </div>
+   
+    <div class="row d_flex justify-content-end">
+        <button type="button" class="btn btn-md btn-outline-secondary mr-2">Back</button>
+        <button type="submit" class="btn btn-md btn-outline-primary" [disabled]="!employeeRegistrationForm.valid">Save</button>
+    </div>
+   
+  
+  </form>
+  
+  </div> -->
+  <div class="container">
+    <div class="row">
+      
+ 
+<div class="col-sm-12">
+
+      <form [formGroup]="employeeRegistrationForm" (ngSubmit)="onSubmit()">
+          <div class="form-group row">
+              <label for="inputEmployeeId" class="col-sm-2 col-form-label">Employee Id</label>
+              <div class="col-sm-3">
+                <input type="number" class="form-control" id="inputEmployeeId"  formControlName="empId" placeholder="Employee Id">
+              </div>
+            </div>
+
+          <div class="form-group row">
+              <label for="inputFirstName" class="col-sm-2 col-form-label">Name</label>
+              <div class="col-md-3 col-sm-12 mb-2">
+                <input type="text" class="form-control" id="inputFirstName" formControlName="firstName" placeholder="First Name" required>
+              </div>
+              <div class="col-md-3 col-sm-12 mb-2">
+                <input type="text" class="form-control" id="inputMiddleName" formControlName="middleName" placeholder="Middle Name">
+              </div>
+              <div class="col-md-3 col-sm-12 mb-2">
+                <input type="text" class="form-control" id="inputLastName"  formControlName="lastName" placeholder="Last Name">
+              </div>
+            </div>
+
+          <div class="form-group row">
+            <label for="inputWorkEmail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="inputWorkEmail"  formControlName="workEmail" placeholder="Work Email">
+            
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputMobile" class="col-sm-2 col-form-label">Mobile</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="inputMobile" formControlName="mobile" placeholder="Mobile Number">
+            </div>
+          </div>
+          <div class="form-group row">
+              <label for="inputWorkPhone" class="col-sm-2 col-form-label">Work Phone</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" id="inputWorkPhone" formControlName="workPhone" placeholder="Work Phone">
+          </div>
+          </div>
+
+          <div class="form-group row">
+              <label for="inputSkype" class="col-sm-2 col-form-label">Skype</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputSkype" formControlName="skypeId" placeholder="Skype Id">
+           </div>
+            </div>
+
+
+          <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+              <div class="col-sm-10">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input"  formControlName="gender" type="radio" name="gender" id="inputGenderMale" value="1" checked>
+                  <label class="form-check-label" for="inputGenderMale">
+                    Male
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input"  formControlName="gender" type="radio" name="gender" id="inputGenderFemale" value="2">
+                  <label class="form-check-label" for="inputGenderFemale">
+                    Female
+                  </label>
+                </div>
+              
+              </div>
+            </div>
+          </fieldset>
+        
+
+  
+          <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="button" class="btn btn-md btn-secondary mr-2" (click)="bsModalRef.hide()">Back</button>
+                <button type="submit" class="btn btn-md btn-primary" [disabled]="!employeeRegistrationForm.valid">Save</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+
+    </div>
+  </div>
