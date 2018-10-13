@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { SkillService } from '../../skill/skill.service';
+import { BsModalRef } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-employee-skill-mapping-modal',
@@ -26,7 +27,7 @@ export class EmployeeSkillMappingModalComponent implements OnInit {
     this.showFilters = true;
   }
 
-constructor(private employeeService: EmployeeService, private skillService: SkillService) { }
+constructor(public bsModalRef: BsModalRef ,private employeeService: EmployeeService, private skillService: SkillService) { }
 
   ngOnInit(){
     this.skills = [{

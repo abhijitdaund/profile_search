@@ -1,0 +1,8 @@
+.message-alert{
+    width: auto;
+    height: 49px;
+    position: fixed;
+    bottom: 5%;
+    right: 40%;
+    z-index: 999;
+}

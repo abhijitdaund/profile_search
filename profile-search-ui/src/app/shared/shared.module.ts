@@ -5,13 +5,18 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { RouterModule } from '@angular/router';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule
   ],
-  declarations: [SearchBarComponent, HeaderComponent, FooterComponent, SideBarComponent],
-  exports:[SearchBarComponent, HeaderComponent, FooterComponent, SideBarComponent]
+  declarations: [SearchBarComponent,
+                 HeaderComponent,
+                  FooterComponent,
+                   SideBarComponent,
+                    AlertComponent],
+  exports:[SearchBarComponent, HeaderComponent, FooterComponent, SideBarComponent,AlertComponent]
 })
 export class SharedModule { }
