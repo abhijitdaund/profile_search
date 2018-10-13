@@ -14,9 +14,9 @@ export class LoginComponent implements OnInit {
   }
 
   logIn(){
-    debugger;
+  
     this.router.navigate(['main/employee']);
-    debugger;
+    
   }
 
 }

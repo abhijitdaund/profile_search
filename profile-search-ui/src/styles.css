@@ -18,7 +18,11 @@ h4 {
   color: #6c757d;;
 }
 
-
+.search-bar{
+    flex-grow: 1;
+    margin-left: 10px;
+    margin-right: 10px
+}
 
 a,
 a:hover,
@@ -302,6 +306,8 @@ ul.CTAs a {
     #sidebarCollapse.active span:last-of-type {
         transform: rotate(-45deg) translate(1px, -1px);
     }
+
+  
 
 }
 

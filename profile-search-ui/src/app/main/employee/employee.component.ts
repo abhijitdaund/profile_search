@@ -6,6 +6,7 @@ import { EmployeeRegistrationModalComponent } from './employee-registration-moda
 import { EmployeeService } from './employee.service';
 import { Employee } from './employee.model';
 import { EmployeeSkillMappingModalComponent } from './employee-skill-mapping-modal/employee-skill-mapping-modal.component';
+import { AlertService } from '../../core/alert.service';
 
 @Component({
   selector: 'app-employee',
@@ -16,10 +17,13 @@ export class EmployeeComponent implements OnInit {
   bsModalRef: BsModalRef;
   employees:Employee[];
 
-  constructor(private modalService: BsModalService, private employeeService: EmployeeService) { }
+  constructor(private modalService: BsModalService,
+              private employeeService: EmployeeService,
+              private alertService: AlertService) { }
 
   ngOnInit() {
     this.getEmployees();
+   
   }
 
   triggerAddEmployee(){
@@ -46,10 +50,22 @@ export class EmployeeComponent implements OnInit {
      this.bsModalRef.content.submit$.subscribe((employee)=>{
        this.employeeService.createEmployee(employee).subscribe((response)=>{
         this.bsModalRef.hide();
+        this.alertService.success('Employee Successfully Updated');
         this.getEmployees();
        });
      
      });
+  }
+
+  search(key){
+  if(key.length){
+    this.employees = this.employees.filter((employee)=>{
+         return employee.firstName.includes(key);
+    });
+  }
+  else{
+    this.getEmployees();
+  }
   }
 
   link(employee){ 
@@ -67,6 +83,7 @@ export class EmployeeComponent implements OnInit {
 
        this.employeeService.mapEmployeeAndSkill(data.employeeId,skills).subscribe((response)=>{
         this.bsModalRef.hide();
+        this.alertService.success('Skill Successfully Attached');
         this.getEmployees();
        });
      
@@ -76,6 +93,8 @@ export class EmployeeComponent implements OnInit {
   getEmployees(){
     this.employeeService.getEmployees().subscribe((response)=>{
                this.employees = response;
+              
+              
     });
   }
 
