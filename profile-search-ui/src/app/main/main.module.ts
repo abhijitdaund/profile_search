@@ -18,7 +18,6 @@ import { SkillRegistrationModalComponent } from './skill/skill-registration-moda
 import { SkillService } from './skill/skill.service';
 import { SearchComponent } from './search/search.component';
 import { EmployeeSkillMappingModalComponent } from './employee/employee-skill-mapping-modal/employee-skill-mapping-modal.component';
-import { AlertService } from '../core/alert.service';
 
 
 
@@ -73,6 +72,6 @@ export const routes: Routes = [
   entryComponents: [EmployeeRegistrationModalComponent,
     SkillRegistrationModalComponent,
     EmployeeSkillMappingModalComponent],
-  providers:[ EmployeeService, SkillService, AlertService ]
+  providers:[ EmployeeService, SkillService ]
 })
 export class MainModule { }

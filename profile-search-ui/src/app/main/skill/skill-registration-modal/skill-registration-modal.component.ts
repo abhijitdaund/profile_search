@@ -12,29 +12,15 @@ import { BsModalRef } from 'ngx-bootstrap';
 export class SkillRegistrationModalComponent implements OnInit {
   @Output() submit$  =  new EventEmitter<Skill>();
   skillRegistrationForm;
-  selectedSkill;
   constructor(private fb: FormBuilder,public bsModalRef: BsModalRef) { }
 
 
   ngOnInit() {
-    if(this.selectedSkill){
-      this.skillRegistrationForm  = this.fb.group({
-        skillId:[this.selectedSkill.skillId],
-        skillName: [this.selectedSkill.skillName, Validators.required],
-        isDeleted:[false]
-    });
-
-    }
-    else{
-      this.skillRegistrationForm  = this.fb.group({
-        skillId:[''],
-        skillName: ['', Validators.required],
-        isDeleted:[false]
-    });
-
-    }
-
-
+  this.skillRegistrationForm  = this.fb.group({
+      skillId:[''],
+      skillName: ['', Validators.required],
+      isDeleted:[false]
+  });
   }
   onSubmit(){
     this.submit$.emit(this.skillRegistrationForm.value);

@@ -1,6 +1,4 @@
-import { Component, OnInit, ViewChild, Output, EventEmitter, HostListener, HostBinding } from '@angular/core';
-import { KeyValuePipe } from '@angular/common';
-import { query } from '@angular/animations';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-search-bar',
@@ -8,18 +6,10 @@ import { query } from '@angular/animations';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-  
-  @ViewChild('search') search;
-  @Output() searchKey =  new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit() {
-  }
-  
-
-  @HostListener('keyup')
-  keyup(){
-    this.searchKey.emit(this.search.nativeElement.value);
   }
 
 }
